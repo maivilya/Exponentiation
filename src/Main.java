@@ -1,5 +1,11 @@
+import java.util.Scanner;
+
 public class Main {
+    private final static Scanner scan = new Scanner(System.in);
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+    }
+
+    private static int getNumberTerminal(){
+        return scan.nextInt();
     }
 }
