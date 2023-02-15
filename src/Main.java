@@ -7,6 +7,12 @@ public class Main {
 
     }
 
+    // Я добавил этот метод, чтобы в случае, когда дробная часть = 0
+    // выводилось число без дробной части
+    private static double fractionalPart(double d){
+        return d - Math.floor(d);
+    }
+
 
 
     private static int convertDoubleToInt(double d) {
