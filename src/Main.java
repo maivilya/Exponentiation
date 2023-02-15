@@ -4,7 +4,22 @@ public class Main {
     private final static Scanner scan = new Scanner(System.in);
 
     public static void main(String[] args) {
+        terminalFunctionalTesting();
+    }
 
+    private static void terminalFunctionalTesting(){
+        for (int i = 0; i < 4; i++){
+            System.out.print("Enter tne number: ");
+            int A = getNumberTerminal();
+            System.out.print("Enter tne degree of a number: ");
+            int B = getNumberTerminal();
+            double resultExponent = exponent(A, B);
+            if(fractionalPart(resultExponent) == 0.0){
+                System.out.printf("%d in degree %d = %d\n",A, B, convertDoubleToInt(resultExponent));
+            } else {
+                System.out.printf("%d in degree %d = %f\n",A, B, resultExponent);
+            }
+        }
     }
 
     // Я добавил этот метод, чтобы в случае, когда дробная часть = 0
