@@ -4,9 +4,31 @@ import java.util.stream.Collectors;
 
 public class Main {
     private final static Scanner scan = new Scanner(System.in);
+    private final static String inputFileName = "src/input.txt";
 
     public static void main(String[] args) throws IOException {
-        //terminalFunctionalTesting();
+
+        System.out.print(choosingOperation());
+        int userChoosing = scan.nextInt();
+        if (userChoosing == 1){
+            terminalFunctional();
+        } else if (userChoosing == 2){
+            writeInFile(inputReader(inputFileName, "a"), inputReader(inputFileName, "b"));
+        } else {
+            System.out.println(uncorrectedOperation());
+        }
+
+    }
+
+    private static String uncorrectedOperation(){
+        return "you input uncorrected operation, try again";
+    }
+
+    private static String choosingOperation(){
+        return "Possible operations: " + "\n"
+                + String.format("%-10s\n", "1-Enter 1 to work with the terminal;")
+                + String.format("%-10s\n", "2-Enter 2 to work with the file;")
+                + "Choose operation: ";
     }
 
     private static void writeInFile(int variableA, int variableB){
@@ -44,8 +66,8 @@ public class Main {
                         .collect(Collectors.joining())
                         .trim();
             } else {
-                FileWriter fWriter = new FileWriter("error.txt");
-                fWriter.write("uncorrected file's format " + fileName);
+                FileWriter fWriter = new FileWriter("src/error.txt");
+                fWriter.write("uncorrected file's format");
             }
         }
         bReader.close();
@@ -71,18 +93,16 @@ public class Main {
             return 0;
         }
 
-        private static void terminalFunctionalTesting () {
-            for (int i = 0; i < 4; i++) {
-                System.out.print("Enter tne number: ");
-                int A = getNumberTerminal();
-                System.out.print("Enter tne degree of a number: ");
-                int B = getNumberTerminal();
-                double resultExponent = exponent(A, B);
-                if (fractionalPart(resultExponent) == 0.0) {
-                    System.out.printf("%d in degree %d = %d\n", A, B, convertDoubleToInt(resultExponent));
-                } else {
-                    System.out.printf("%d in degree %d = %f\n", A, B, resultExponent);
-                }
+        private static void terminalFunctional() {
+            System.out.print("Enter tne number: ");
+            int A = getNumberTerminal();
+            System.out.print("Enter tne degree of a number: ");
+            int B = getNumberTerminal();
+            double resultExponent = exponent(A, B);
+            if (fractionalPart(resultExponent) == 0.0) {
+                System.out.printf("%d in degree %d = %d\n", A, B, convertDoubleToInt(resultExponent));
+            } else {
+                System.out.printf("%d in degree %d = %f\n", A, B, resultExponent);
             }
         }
 
