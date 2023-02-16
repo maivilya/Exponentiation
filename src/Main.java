@@ -5,9 +5,24 @@ import java.util.stream.Collectors;
 public class Main {
     private final static Scanner scan = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         //terminalFunctionalTesting();
-        String FILENAME = "src/input.txt";
+    }
+
+    private static void writeInFile(int variableA, int variableB){
+        try(FileWriter fWriter = new FileWriter("src/output.txt")){
+            double resultExponent = exponent(variableA, variableB);
+            if (fractionalPart(resultExponent) == 0.0) {
+                fWriter.write(String.format("%d in degree %d = %d\n",
+                        variableA, variableB, convertDoubleToInt(resultExponent)));
+            } else {
+                fWriter.write(String.format("%d in degree %d = %f\n",
+                        variableA, variableB, resultExponent));
+                fWriter.close();
+            }
+        } catch(IOException e){
+            e.printStackTrace();
+        }
     }
 
     private static int inputReader(String fileName, String variable) throws IOException {
