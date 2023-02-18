@@ -4,10 +4,9 @@ import java.util.stream.Collectors;
 
 public class Main {
     private final static Scanner scan = new Scanner(System.in);
-    private final static String inputFileName = "src/input.txt";
 
     public static void main(String[] args) throws IOException {
-
+        final String inputFileName = "src/input.txt";
         System.out.print(choosingOperation());
         int userChoosing = scan.nextInt();
         if (userChoosing == 1){
